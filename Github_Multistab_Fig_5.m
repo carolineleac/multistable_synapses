@@ -5,7 +5,7 @@ clear;
 load ('multistabData_Fig5');
 
 
-%% Filter the time series, calculate PLV and correlations using a rolling window
+%% Filter the time series, calculate PLV and correlations using a rolling window of length tau
 % Discards first 300,000 time steps
 
 tau = 10000;
@@ -32,8 +32,6 @@ for t=1:length(newE)-tau
     multcrDat(t)=mean(sig1.*sig2.*heaviside(sig1.*sig2-hnew));
     meank(t) = mean(newK(t:t+tau));
 end
-
-figure
 
 
 %% Fig 5A - PLV vs mean weight
@@ -73,7 +71,6 @@ subplot(236); plot(E(1,highStart:highStart+dur),'LineWidth',1.5,'Color',c1); hol
 
 
 
-%%
 
 
 
